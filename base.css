@@ -38,3 +38,19 @@ svg {
     font-weight: bold;
     text-transform: uppercase;
     fill: #000; }
+
+.radar-ref-table {
+  width: 1080px;
+  font-size: 16px;
+  line-height: 26px;
+  padding: 20px; }
+  .radar-ref-table tr:nth-child(odd) {
+    background: #bababa; }
+  .radar-ref-table tr:nth-child(even) {
+    background: #dadada; }
+  .radar-ref-table td {
+    padding: 10px 15px; }
+  .radar-ref-table tr.radar-ref-status-group {
+    font-size: 20px;
+    font-weight: bold;
+    background: #fafafa; }

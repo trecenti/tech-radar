@@ -4,14 +4,15 @@
   <meta charset="utf-8">
   <title>Thoughtworks Radar 2014</title>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
-  <script src="http://chancejs.com/chance.min.js"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.4.2/d3.js"></script>
-  <script src="dist/tech-radar.min.js"></script>
-  <link href="dist/base.css" rel="stylesheet" type="text/css" />
+  <script src="chance.js"></script>
+  <script src="d3.min.js"></script>
+  <script src="tech-radar.min.js"></script>
+  <link href="base.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
   <div id="radar">
   </div>
+  <div id="ref-table"></div>
 </body>
 <script>
   var adopt = new tr.models.Cycle('Adopt', 0);
@@ -135,5 +136,7 @@
 
   var radarGraph = new tr.graphing.Radar(1080, radar);
   radarGraph.init('#radar').plot();
+  var refTable = new tr.graphing.RefTable(radar);
+  refTable.init('#ref-table').render();
 </script>
 </html>
