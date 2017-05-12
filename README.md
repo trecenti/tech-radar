@@ -4,7 +4,7 @@
 
 A library that supports the creation of a Tech Radar, inspired by [thoughtworks.com/radar/](http://thoughtworks.com/radar/).
 
-Check the example [here](http://brunotrecenti.com/tech-radar/)
+Check the example [here](http://trecenti.github.io/tech-radar/)
 
 ### How To Use
 
