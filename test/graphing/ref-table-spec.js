@@ -14,7 +14,7 @@ describe('tr.graphing.RefTable', function () {
         radar.setFourthQuadrant(languageFramework);
 
         element = { innerHTML: '' };
-        spyOn(document, 'querySelector').andReturn(element);
+        spyOn(document, 'querySelector').and.returnValue(element);
     });
 
     describe('render', function () {
