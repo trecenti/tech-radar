@@ -12,13 +12,12 @@
     "build:clean": "rm -rf ./dist/*",
     "build:sass": "node-sass -r ./src/stylesheets/base.scss ./dist/base.css",
     "build:uglify": "uglifyjs -c -m  -o ./dist/tech-radar.min.js -- ./src/namespaces.js ./src/**/*.js",
-    "build:deps": "cp ./bower_components/**/{chance,d3.min}*.js ./dist/",
+    "build:deps": "cp ./node_modules/**/{chance,d3.min}*.js ./dist/",
     "build": "npm run build:clean && npm run build:sass && npm run build:uglify && npm run build:deps",
     "examples:clean": "rm -rf ./examples/*{.js,.css,.map}",
     "examples:deps": "cp -r ./dist/*  ./examples/",
     "examples": "npm run build && npm run examples:clean && npm run examples:deps",
-    "publishExamples": "node ./scripts/publish-examples.js",
-    "postinstall": "bower install"
+    "publishExamples": "node ./scripts/publish-examples.js"
   },
   "author": "Bruno Trecenti",
   "repository": {
@@ -35,10 +34,12 @@
     "requirejs": "~2.3.3",
     "karma-phantomjs-launcher": "~1.0.4",
     "karma": "~1.7.0",
-    "bower": "~1.8.0",
     "node-sass": "~4.5.3",
     "uglify-js": "~3.0.15",
     "jasmine-core": "~2.6.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "d3": "~3.4.2",
+    "chance": "~0.5.4"
+  }
 }
