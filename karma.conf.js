@@ -6,8 +6,8 @@ module.exports = function(config) {
     basePath: '.',
     frameworks: ['jasmine'],
     files: [
-      'bower_components/chance/chance.js',
-      'bower_components/d3/d3.min.js',
+      'node_modules/chance/dist/chance.min.js',
+      'node_modules/d3/build/d3.min.js',
       'src/namespaces.js',
       'src/util/**/*.js',
       'src/models/**/*.js',
