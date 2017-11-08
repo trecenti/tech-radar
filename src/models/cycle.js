@@ -1,4 +1,4 @@
-tr.models.Cycle = function (name, order) {
+const Cycle = function (name, order) {
   var self = {};
 
   self.name = function () {
@@ -11,3 +11,5 @@ tr.models.Cycle = function (name, order) {
 
   return self;
 };
+
+export default Cycle

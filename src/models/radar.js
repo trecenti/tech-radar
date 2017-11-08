@@ -1,4 +1,4 @@
-tr.models.Radar = function() {
+const Radar = function() {
   var self, quadrants, blipNumber;
 
   blipNumber = 0;
@@ -78,3 +78,5 @@ tr.models.Radar = function() {
 
   return self;
 };
+
+export default Radar

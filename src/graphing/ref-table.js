@@ -1,4 +1,4 @@
-tr.graphing.RefTable = function (radar) {
+const RefTable = function (radar) {
   var self = {};
   var injectionElement;
 
@@ -68,3 +68,5 @@ tr.graphing.RefTable = function (radar) {
 
   return self;
 };
+
+export default RefTable

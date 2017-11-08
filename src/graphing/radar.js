@@ -1,13 +1,18 @@
-tr.graphing.Radar = function (size, radar, toolTipDescription) {
+import Fib from '../util/fib'
+import Chance from 'chance'
+import * as d3 from 'd3'
+
+const RadarGraph = function (size, radar, toolTipDescription) {
   var self, fib, svg, texts;
 
   texts = [];
-  fib = new tr.util.Fib();
+  fib = new Fib();
 
   self = {};
   self.svg = function () {
     return svg;
   }
+  self.d3 = d3;
 
   function center () {
     return Math.round(size/2);
@@ -175,7 +180,7 @@ tr.graphing.Radar = function (size, radar, toolTipDescription) {
   }
 
   self.init = function (selector) {
-    svg = d3.select(selector || 'body').append("svg");
+    svg = self.d3.select(selector || 'body').append("svg");
     return self;
   };
 
@@ -206,3 +211,5 @@ tr.graphing.Radar = function (size, radar, toolTipDescription) {
 
   return self;
 };
+
+export default RadarGraph

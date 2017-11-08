@@ -1,4 +1,4 @@
-tr.util.Fib = function () {
+const Fib = function () {
   var self = {};
 
   self.sequence = function (length) {
@@ -22,3 +22,5 @@ tr.util.Fib = function () {
 
   return self;
 };
+
+export default Fib

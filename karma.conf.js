@@ -6,14 +6,23 @@ module.exports = function(config) {
     basePath: '.',
     frameworks: ['jasmine'],
     files: [
-      'node_modules/chance/dist/chance.min.js',
-      'node_modules/d3/build/d3.min.js',
-      'src/namespaces.js',
-      'src/util/**/*.js',
-      'src/models/**/*.js',
-      'src/graphing/**/*.js',
-      'test/**/*.js'
+      'test/index.js'
     ],
+    preprocessors: {
+      'test/index.js': ['webpack']
+    },
+    webpack: {
+      module: {
+        loaders: [
+          {
+            test: /\.js$/,
+            loader: 'babel-loader',
+            exclude: /node_modules/,
+            query: { presets: ['es2015', 'stage-0'] }
+          }
+        ]
+      },
+    },
     exclude: [ ],
     reporters: ['progress'],
     port: 9876,

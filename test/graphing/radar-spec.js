@@ -1,8 +1,12 @@
-describe('tr.graphing.Radar', function () {
+import Radar from '../../src/models/radar'
+import Cycle from '../../src/models/cycle'
+import RadarGraph from '../../src/graphing/radar'
+
+describe('RadarGraph', function () {
   var radar;
 
   beforeEach(function () {
-    radar = new tr.models.Radar();
+    radar = new Radar();
     spyOn(radar, 'cycles').and.returnValue([]);
   });
 
@@ -10,9 +14,9 @@ describe('tr.graphing.Radar', function () {
     it('appends the svg', function () {
       var radarGraph, selection;
 
-      radarGraph = new tr.graphing.Radar(500, radar);
+      radarGraph = new RadarGraph(500, radar);
       selection = { append: jasmine.createSpy() };
-      spyOn(d3, 'select').and.returnValue(selection);
+      radarGraph.d3 = { select: jasmine.createSpy('select').and.returnValue(selection) };
 
       radarGraph.init();
 
@@ -20,32 +24,34 @@ describe('tr.graphing.Radar', function () {
     });
 
     it('selects body if no selector provided', function () {
-      var radarGraph;
+      var radarGraph, selection;
 
-      radarGraph = new tr.graphing.Radar(500, radar);
-      spyOn(d3, 'select').and.callThrough();
+      radarGraph = new RadarGraph(500, radar);
+      selection = { append: jasmine.createSpy() };
+      radarGraph.d3 = { select: jasmine.createSpy('select').and.returnValue(selection) };
 
       radarGraph.init();
 
-      expect(d3.select).toHaveBeenCalledWith('body');
+      expect(radarGraph.d3.select).toHaveBeenCalledWith('body');
     });
 
     it('selects the selector if provided', function () {
-      var radarGraph;
+      var radarGraph, selection;
 
-      radarGraph = new tr.graphing.Radar(500, radar);
-      spyOn(d3, 'select').and.callThrough();
+      radarGraph = new RadarGraph(500, radar);
+      selection = { append: jasmine.createSpy() };
+      radarGraph.d3 = { select: jasmine.createSpy('select').and.returnValue(selection) };
 
       radarGraph.init('#radar');
 
-      expect(d3.select).toHaveBeenCalledWith('#radar');
+      expect(radarGraph.d3.select).toHaveBeenCalledWith('#radar');
     });
   });
 
   it('sets the size', function () {
     var svg, radarGraph;
 
-    radarGraph = new tr.graphing.Radar(500, radar);
+    radarGraph = new RadarGraph(500, radar);
     radarGraph.init();
 
     svg = radarGraph.svg();
@@ -61,7 +67,7 @@ describe('tr.graphing.Radar', function () {
     it('plots a vertical line in the center', function () {
       var radarGraph, svg;
 
-      radarGraph = new tr.graphing.Radar(500, radar);
+      radarGraph = new RadarGraph(500, radar);
       radarGraph.init();
 
       svg = radarGraph.svg();
@@ -81,7 +87,7 @@ describe('tr.graphing.Radar', function () {
     it('plots a horizontal line in the center', function () {
       var svg, radarGraph;
 
-      radarGraph = new tr.graphing.Radar(500, radar);
+      radarGraph = new RadarGraph(500, radar);
       radarGraph.init();
 
       svg = radarGraph.svg();
@@ -105,12 +111,12 @@ describe('tr.graphing.Radar', function () {
     beforeEach(function () {
       var radar;
 
-      radar = new tr.models.Radar();
+      radar = new Radar();
       spyOn(radar, 'cycles').and.returnValue([
-        new tr.models.Cycle('Adopt'),
-        new tr.models.Cycle('Hold')
+        new Cycle('Adopt'),
+        new Cycle('Hold')
       ]);
-      radarGraph = new tr.graphing.Radar(500, radar);
+      radarGraph = new RadarGraph(500, radar);
       radarGraph.init();
 
       svg = radarGraph.svg();

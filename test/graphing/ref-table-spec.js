@@ -1,13 +1,19 @@
-describe('tr.graphing.RefTable', function () {
+import RefTable from '../../src/graphing/ref-table'
+import Blip from '../../src/models/blip'
+import Quadrant from '../../src/models/quadrant'
+import Radar from '../../src/models/radar'
+import Cycle from '../../src/models/cycle'
+
+describe('RefTable', function () {
     var radar, toolsQuadrant, techniquesQuadrant, platformsQuadrant, languageFramework, element;
 
     beforeEach(function () {
-        toolsQuadrant = new tr.models.Quadrant('Tools');
-        techniquesQuadrant = new tr.models.Quadrant('Techniques');
-        platformsQuadrant = new tr.models.Quadrant('Platforms');
-        languageFramework = new tr.models.Quadrant('Languages');
+        toolsQuadrant = new Quadrant('Tools');
+        techniquesQuadrant = new Quadrant('Techniques');
+        platformsQuadrant = new Quadrant('Platforms');
+        languageFramework = new Quadrant('Languages');
 
-        radar = new tr.models.Radar();
+        radar = new Radar();
         radar.setFirstQuadrant(toolsQuadrant);
         radar.setSecondQuadrant(techniquesQuadrant);
         radar.setThirdQuadrant(platformsQuadrant);
@@ -19,16 +25,16 @@ describe('tr.graphing.RefTable', function () {
 
     describe('render', function () {
         it("groups blips by cycle", function () {
-            var adopt = new tr.models.Cycle('Adopt');
-            var assess = new tr.models.Cycle('Assess');
+            var adopt = new Cycle('Adopt');
+            var assess = new Cycle('Assess');
 
             toolsQuadrant.add([
-                new tr.models.Blip('foo', adopt, true, 'this is foo'),
-                new tr.models.Blip('bar', assess, true, 'this is bar'),
-                new tr.models.Blip('baz', adopt, true, 'this is baz')
+                new Blip('foo', adopt, true, 'this is foo'),
+                new Blip('bar', assess, true, 'this is bar'),
+                new Blip('baz', adopt, true, 'this is baz')
             ]);
 
-            var table = new tr.graphing.RefTable(radar);
+            var table = new RefTable(radar);
             table.init('#some-id').render();
 
             expect(element.innerHTML).toEqual(
@@ -42,17 +48,17 @@ describe('tr.graphing.RefTable', function () {
         });
 
         it("respects the assigned order of cycles", function () {
-            var adopt = new tr.models.Cycle('Adopt', 1);
-            var assess = new tr.models.Cycle('Assess', 3);
-            var hold = new tr.models.Cycle('Hold', 2);
+            var adopt = new Cycle('Adopt', 1);
+            var assess = new Cycle('Assess', 3);
+            var hold = new Cycle('Hold', 2);
 
             toolsQuadrant.add([
-                new tr.models.Blip('foo', adopt, true, 'this is foo'),
-                new tr.models.Blip('bar', assess, true, 'this is bar'),
-                new tr.models.Blip('baz', hold, true, 'this is baz')
+                new Blip('foo', adopt, true, 'this is foo'),
+                new Blip('bar', assess, true, 'this is bar'),
+                new Blip('baz', hold, true, 'this is baz')
             ]);
 
-            var table = new tr.graphing.RefTable(radar);
+            var table = new RefTable(radar);
             table.init('#some-id').render();
 
             expect(element.innerHTML).toEqual(

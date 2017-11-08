@@ -1,9 +1,12 @@
-describe('tr.models.Blip', function () {
+import Blip from '../../src/models/blip'
+import Cycle from '../../src/models/cycle'
+
+describe('Blip', function () {
   var blip;
   beforeEach(function () {
-    blip = new tr.models.Blip(
+    blip = new Blip(
       'My Blip',
-      new tr.models.Cycle('My Cycle')
+      new Cycle('My Cycle')
     );
   });
 
@@ -25,9 +28,9 @@ describe('tr.models.Blip', function () {
   });
 
   it('is new', function () {
-    blip = new tr.models.Blip(
+    blip = new Blip(
       'My Blip',
-      new tr.models.Cycle('My Cycle'),
+      new Cycle('My Cycle'),
       true
     );
 
@@ -35,9 +38,9 @@ describe('tr.models.Blip', function () {
   });
 
   it('is not new', function () {
-    blip = new tr.models.Blip(
+    blip = new Blip(
       'My Blip',
-      new tr.models.Cycle('My Cycle'),
+      new Cycle('My Cycle'),
       false
     );
 
