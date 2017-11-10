@@ -1,7 +1,7 @@
-import Radar from './models/Radar'
-import Blip from './models/Blip'
-import Cycle from './models/Cycle'
-import Quadrant from './models/Quadrant'
+import Radar from './models/radar'
+import Blip from './models/blip'
+import Cycle from './models/cycle'
+import Quadrant from './models/quadrant'
 import RadarGraph from './graphing/radar'
 import RefTable from './graphing/ref-table'
 
