@@ -14,6 +14,4 @@ export {
   RefTable,
 }
 
-
-
 export default Radar
