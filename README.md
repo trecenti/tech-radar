@@ -20,4 +20,3 @@ Pull Requests are welcome, write tests whenever possible.
 - `npm test` - to run your tests
 - `npm run build` - to build out your changes
 - `npm run examples` - to generate the examples
-- `npm run test:dist` - make sure uglify doesn't break stuff
